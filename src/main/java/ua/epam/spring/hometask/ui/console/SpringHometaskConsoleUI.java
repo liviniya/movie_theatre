@@ -36,7 +36,7 @@ public class SpringHometaskConsoleUI {
     }
 
     private void initContext() {
-        context = new ClassPathXmlApplicationContext("context.xml");
+        context = new ClassPathXmlApplicationContext("spring.xml");
     }
 
     private void run() {
