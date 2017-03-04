@@ -8,30 +8,7 @@
         http://www.springframework.org/schema/util
  		http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <bean id="auditoriumService" class="ua.epam.spring.hometask.service.impl.AuditoriumServiceImpl"
-        init-method="init">
-        <property name="properties" ref="auditoriumsProperties"/>
-    </bean>
+    <import resource="services.xml"/>
 
-    <bean id="bookingService" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl"/>
-
-    <bean id="discountService" class="ua.epam.spring.hometask.service.impl.DiscountServiceImpl"/>
-
-    <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl"/>
-
-    <bean id="userService" class="ua.epam.spring.hometask.service.impl.UserServiceImpl"/>
-
-    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">-->
-        <!--<property name="locations">-->
-            <!--<list>-->
-                <!--<value>classpath:auditoriums.properties</value>-->
-            <!--</list>-->
-        <!--</property>-->
-
-        <!--<property name="ignoreResourceNotFound" value="true"/>-->
-
-        <!--<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>-->
-    <!--</bean>-->
-
-    <util:properties id="auditoriumsProperties" location="classpath:auditoriums.properties"/>
+    <import resource="repositories.xml"/>
 </beans>

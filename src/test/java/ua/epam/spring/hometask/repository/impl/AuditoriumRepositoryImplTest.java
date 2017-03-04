@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.service.impl;
+package ua.epam.spring.hometask.repository.impl;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,31 +14,31 @@ import static org.junit.Assert.*;
 /**
  * Created by Oksana_Moroz on 3/4/2017.
  */
-public class AuditoriumServiceImplTest {
+public class AuditoriumRepositoryImplTest {
 
-    private AuditoriumServiceImpl auditoriumService;
+    private AuditoriumRepositoryImpl auditoriumRepository;
 
     @Before
     public void init() {
-        auditoriumService = new AuditoriumServiceImpl();
-        auditoriumService.setAuditoriums(createAuditoriums());
+        auditoriumRepository = new AuditoriumRepositoryImpl();
+        auditoriumRepository.setAuditoriums(createAuditoriums());
     }
 
     @Test
     public void testGetByName() {
-        Auditorium found = auditoriumService.getByName("Green");
+        Auditorium found = auditoriumRepository.getByName("Green");
         assertNotNull(found);
     }
 
     @Test
     public void testGetByNotExistedName() {
-        Auditorium found = auditoriumService.getByName("Black");
+        Auditorium found = auditoriumRepository.getByName("Black");
         assertNull(found);
     }
 
     @Test
     public void testGetByEmptyName() {
-        Auditorium found = auditoriumService.getByName("");
+        Auditorium found = auditoriumRepository.getByName("");
         assertNull(found);
     }
 
