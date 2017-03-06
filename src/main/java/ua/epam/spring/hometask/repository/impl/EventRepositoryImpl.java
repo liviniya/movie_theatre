@@ -7,49 +7,47 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by Oksana_Moroz on 3/4/2017.
  */
-public class EventRepositoryImpl implements EventRepository {
-    @Override
-    public Event save(@Nonnull Event object) {
-        return null;
-    }
-
-    @Override
-    public void remove(@Nonnull Event object) {
-
-    }
-
-    @Override
-    public Event getById(@Nonnull Long id) {
-        return null;
-    }
-
-    @Nonnull
-    @Override
-    public Collection<Event> getAll() {
-        return null;
-    }
+public class EventRepositoryImpl extends AbstractDomainObjectRepositoryImpl<Event> implements EventRepository {
 
     @Nullable
     @Override
     public Event getByName(@Nonnull String name) {
-        return null;
+        return objects.stream()
+                .filter(e -> Objects.equals(e.getName(), name))
+                .findAny()
+                .orElse(null);
     }
 
     @Nonnull
     @Override
     public Set<Event> getForDateRange(@Nonnull LocalDate from, @Nonnull LocalDate to) {
-        return null;
+        return objects.stream()
+                .filter(e -> e.airsOnDates(from, to))
+                .collect(Collectors.toSet());
     }
 
     @Nonnull
     @Override
     public Set<Event> getNextEvents(@Nonnull LocalDateTime to) {
-        return null;
+        LocalDateTime now = LocalDateTime.now();
+        return objects.stream()
+                .filter(e -> e.airsOnDates(now, to))
+                .collect(Collectors.toSet());
+    }
+
+    @Override
+    protected void updateExistedObject(Event existed, Event object) {
+        existed.setName(object.getName());
+        existed.setAirDates(object.getAirDates());
+        existed.setBasePrice(object.getBasePrice());
+        existed.setRating(object.getRating());
+        existed.setAuditoriums(object.getAuditoriums());
     }
 }

@@ -16,7 +16,9 @@
 
     <bean id="discountService" class="ua.epam.spring.hometask.service.impl.DiscountServiceImpl"/>
 
-    <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl"/>
+    <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
+        <property name="domainObjectRepository" ref="eventRepository"/>
+    </bean>
 
     <bean id="userService" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
         <property name="domainObjectRepository" ref="userRepository"/>

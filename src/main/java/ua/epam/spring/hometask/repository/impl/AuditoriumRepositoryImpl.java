@@ -6,6 +6,7 @@ import ua.epam.spring.hometask.repository.AuditoriumRepository;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Oksana_Moroz on 3/4/2017.
@@ -51,11 +52,10 @@ public class AuditoriumRepositoryImpl implements AuditoriumRepository {
     }
 
     private Set<Long> parseVipSeats(String vipSeatsStr) {
-        Set<Long> vipSeats = new HashSet<>();
-        Arrays.stream(vipSeatsStr.split(","))
+        Set<Long> vipSeats = Arrays.stream(vipSeatsStr.split(","))
                 .filter(s -> !s.isEmpty())
                 .map(s -> Long.valueOf(s))
-                .forEach(s -> vipSeats.add(s));
+                .collect(Collectors.toSet());
         return vipSeats;
     }
 }
