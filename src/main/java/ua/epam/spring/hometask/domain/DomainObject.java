@@ -9,10 +9,10 @@ public class DomainObject {
 
     private Long id;
 
-    private static final Random idGenerator = new Random();
+    private static Long idCounter = 0l;
 
     public DomainObject() {
-        id = idGenerator.nextLong();
+        id = ++idCounter;
     }
 
     public Long getId() {
