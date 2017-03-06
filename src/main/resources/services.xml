@@ -18,6 +18,8 @@
 
     <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl"/>
 
-    <bean id="userService" class="ua.epam.spring.hometask.service.impl.UserServiceImpl"/>
+    <bean id="userService" class="ua.epam.spring.hometask.service.impl.UserServiceImpl">
+        <property name="userRepository" ref="userRepository"/>
+    </bean>
 
 </beans>

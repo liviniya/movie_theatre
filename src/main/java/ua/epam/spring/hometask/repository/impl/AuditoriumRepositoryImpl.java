@@ -14,11 +14,9 @@ public class AuditoriumRepositoryImpl implements AuditoriumRepository {
 
     private Properties properties;
 
-    private Set<Auditorium> auditoriums;
+    private Set<Auditorium> auditoriums = new HashSet<>();
 
     private void init() {
-        auditoriums = new HashSet<>();
-
         int quantity = Integer.valueOf(properties.getProperty("quantity"));
         for (int i = 1; i <= quantity; i++) {
             Auditorium auditorium = new Auditorium();
@@ -48,6 +46,10 @@ public class AuditoriumRepositoryImpl implements AuditoriumRepository {
         this.properties = properties;
     }
 
+    void setAuditoriums(Set<Auditorium> auditoriums) {
+        this.auditoriums = auditoriums;
+    }
+
     private Set<Long> parseVipSeats(String vipSeatsStr) {
         Set<Long> vipSeats = new HashSet<>();
         Arrays.stream(vipSeatsStr.split(","))
@@ -55,9 +57,5 @@ public class AuditoriumRepositoryImpl implements AuditoriumRepository {
                 .map(s -> Long.valueOf(s))
                 .forEach(s -> vipSeats.add(s));
         return vipSeats;
-    }
-
-    void setAuditoriums(Set<Auditorium> auditoriums) {
-        this.auditoriums = auditoriums;
     }
 }
