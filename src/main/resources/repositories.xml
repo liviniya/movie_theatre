@@ -15,8 +15,6 @@
 
     <bean id="bookingRepository" class="ua.epam.spring.hometask.repository.impl.BookingRepositoryImpl"/>
 
-    <bean id="discountRepository" class="ua.epam.spring.hometask.repository.impl.DiscountRepositoryImpl"/>
-
     <bean id="eventRepository" class="ua.epam.spring.hometask.repository.impl.EventRepositoryImpl"/>
 
     <bean id="userRepository" class="ua.epam.spring.hometask.repository.impl.UserRepositoryImpl"/>

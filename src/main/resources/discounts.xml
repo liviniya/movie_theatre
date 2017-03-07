@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/util
+ 		http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+    <bean id="birthdayStrategy" class="ua.epam.spring.hometask.discount.BirthdayStrategy"/>
+
+    <bean id="every10tStrategy" class="ua.epam.spring.hometask.discount.Every10tStrategy"/>
+
+    <util:list id="discountStrategiesList">
+        <ref bean="birthdayStrategy"/>
+        <ref bean="every10tStrategy"/>
+    </util:list>
+
+    <bean id="discountService" class="ua.epam.spring.hometask.service.impl.DiscountServiceImpl">
+        <property name="discountStrategies" ref="discountStrategiesList"/>
+    </bean>
+
+</beans>

@@ -14,8 +14,6 @@
 
     <bean id="bookingService" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl"/>
 
-    <bean id="discountService" class="ua.epam.spring.hometask.service.impl.DiscountServiceImpl"/>
-
     <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
         <property name="domainObjectRepository" ref="eventRepository"/>
     </bean>
