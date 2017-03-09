@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.ui.console.state;
 
+import java.time.LocalDate;
 import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
@@ -55,7 +56,7 @@ public class UserManageState extends AbstractDomainObjectManageState<User, UserS
     @Override
     protected void printObject(User user) {
         System.out.println("[" + user.getId() + "] " + user.getFirstName() + " " + user.getLastName() + ", "
-                + user.getEmail() + ", bought " + user.getTickets().size() + " tickets");
+                + user.getEmail() + ", born " + user.getBirthday() + ", bought " + user.getTickets().size() + " tickets");
     }
 
     @Override
@@ -64,11 +65,13 @@ public class UserManageState extends AbstractDomainObjectManageState<User, UserS
         String firstName = readStringInput("First name: ");
         String lastName = readStringInput("Last name: ");
         String email = readStringInput("E-mail: ");
+        LocalDate birthday = readDateInput("Birthday (" + DATE_INPUT_PATTERN + "): ");
 
         User user = new User();
         user.setEmail(email);
         user.setFirstName(firstName);
         user.setLastName(lastName);
+        user.setBirthday(birthday);
 
         return user;
     }

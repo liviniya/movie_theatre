@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.ui.console;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collections;
 
@@ -69,6 +70,7 @@ public class SpringHometaskConsoleUI {
         user.setEmail("my@email.com");
         user.setFirstName("Foo");
         user.setLastName("Bar");
+        user.setBirthday(LocalDate.of(1995, 12, 4));
         
         user = userService.save(user);
         

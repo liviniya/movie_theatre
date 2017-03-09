@@ -1,5 +1,6 @@
 package ua.epam.spring.hometask.ui.console.state;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -13,6 +14,7 @@ import java.util.function.Function;
  */
 public abstract class AbstractState {
     public static final String DATE_TIME_INPUT_PATTERN = "yyyy-MM-dd HH:mm";
+    public static final String DATE_INPUT_PATTERN = "yyyy-MM-dd";
     
     private static Scanner scanner = new Scanner(System.in, "UTF-8");
     
@@ -80,6 +82,10 @@ public abstract class AbstractState {
     
     protected LocalDateTime readDateTimeInput(String prefix) {
         return readInput(prefix, s -> LocalDateTime.parse(s, DateTimeFormatter.ofPattern(DATE_TIME_INPUT_PATTERN)));
+    }
+
+    protected LocalDate readDateInput(String prefix) {
+        return readInput(prefix, s -> LocalDate.parse(s, DateTimeFormatter.ofPattern(DATE_INPUT_PATTERN)));
     }
     
     protected String formatDateTime(LocalDateTime dt) {
