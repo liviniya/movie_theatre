@@ -12,7 +12,9 @@
         <property name="auditoriumRepository" ref="auditoriumRepository"/>
     </bean>
 
-    <bean id="bookingService" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl"/>
+    <bean id="bookingService" class="ua.epam.spring.hometask.service.impl.BookingServiceImpl">
+        <property name="discountService" ref="discountService"/>
+    </bean>
 
     <bean id="eventService" class="ua.epam.spring.hometask.service.impl.EventServiceImpl">
         <property name="domainObjectRepository" ref="eventRepository"/>

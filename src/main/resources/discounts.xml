@@ -8,9 +8,9 @@
         http://www.springframework.org/schema/util
  		http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-    <bean id="birthdayStrategy" class="ua.epam.spring.hometask.discount.BirthdayStrategy"/>
+    <bean id="birthdayStrategy" class="ua.epam.spring.hometask.discounts.BirthdayStrategy"/>
 
-    <bean id="every10tStrategy" class="ua.epam.spring.hometask.discount.Every10tStrategy"/>
+    <bean id="every10tStrategy" class="ua.epam.spring.hometask.discounts.Every10tStrategy"/>
 
     <util:list id="discountStrategiesList">
         <ref bean="birthdayStrategy"/>

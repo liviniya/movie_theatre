@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.discount;
+package ua.epam.spring.hometask.discounts;
 
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
@@ -11,10 +11,12 @@ import java.time.Year;
 /**
  * Created by Oksana_Moroz on 3/6/2017.
  */
-public class BirthdayStrategy extends DiscountStrategy {
+public class BirthdayStrategy implements DiscountStrategy {
 
-    public static final Integer PERCENT_DISCOUNT = 5;
-    public static final Integer DAYS_SHIFT = 5;
+    public final byte PERCENT_DISCOUNT = 5;
+    public final int DAYS_SHIFT = 5;
+
+    public BirthdayStrategy() {}
 
     @Override
     public double calculateDiscount(@Nullable User user, @Nonnull Event event,
@@ -26,7 +28,7 @@ public class BirthdayStrategy extends DiscountStrategy {
 
         int daysDifference = Math.abs(eventDay - birthDay);
         if ((daysDifference <= DAYS_SHIFT) || (daysInYear - daysDifference <= DAYS_SHIFT)) {
-            return calculateDiscountForEvent(PERCENT_DISCOUNT, event, numberOfTickets);
+            return PERCENT_DISCOUNT;
         }
 
         return 0;

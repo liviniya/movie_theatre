@@ -1,6 +1,6 @@
 package ua.epam.spring.hometask.service.impl;
 
-import ua.epam.spring.hometask.discount.DiscountStrategy;
+import ua.epam.spring.hometask.discounts.DiscountStrategy;
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
 import ua.epam.spring.hometask.service.DiscountService;
@@ -23,9 +23,9 @@ public class DiscountServiceImpl implements DiscountService {
         double discount = 0;
 
         for (DiscountStrategy discountStrategy : discountStrategies) {
-            double discountPrice = discountStrategy.calculateDiscount(user, event, airDateTime, numberOfTickets);
-            if (discountPrice > discount) {
-                discount = discountPrice;
+            double discountPercent = discountStrategy.calculateDiscount(user, event, airDateTime, numberOfTickets);
+            if (discountPercent > discount) {
+                discount = discountPercent;
             }
         }
 

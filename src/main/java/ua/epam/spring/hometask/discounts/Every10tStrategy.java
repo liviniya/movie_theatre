@@ -1,4 +1,4 @@
-package ua.epam.spring.hometask.discount;
+package ua.epam.spring.hometask.discounts;
 
 import ua.epam.spring.hometask.domain.Event;
 import ua.epam.spring.hometask.domain.User;
@@ -10,24 +10,25 @@ import java.time.LocalDateTime;
 /**
  * Created by Oksana_Moroz on 3/6/2017.
  */
-public class Every10tStrategy extends DiscountStrategy {
+public class Every10tStrategy implements DiscountStrategy {
 
-    public static final Integer DISCOUNT_TICKET_NUMBER = 10;
+    public final int DISCOUNT_TICKET_NUMBER = 10;
+    public final byte PERCENT_DISCOUNT = 50;
 
-    public static final Integer PERCENT_DISCOUNT = 50;
+    public Every10tStrategy() {}
 
     @Override
     public double calculateDiscount(@Nullable User user, @Nonnull Event event,
                                     @Nonnull LocalDateTime airDateTime, long numberOfTickets) {
         int userTickets = user != null ? user.getTicketsSize() : 0;
+        long bonusTickets = 0;
 
-        double discount = 0;
         for (long i = userTickets + 1; i <= userTickets + numberOfTickets; i++) {
             if (i % DISCOUNT_TICKET_NUMBER == 0) {
-                discount += calculateDiscountForEvent(PERCENT_DISCOUNT, event);
+                bonusTickets++;
             }
         }
 
-        return discount;
+        return (double) (PERCENT_DISCOUNT * bonusTickets) / numberOfTickets;
     }
 }
