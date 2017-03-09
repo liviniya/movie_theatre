@@ -13,7 +13,7 @@
         <property name="properties" ref="auditoriumsProperties"/>
     </bean>
 
-    <bean id="bookingRepository" class="ua.epam.spring.hometask.repository.impl.BookingRepositoryImpl"/>
+    <bean id="ticketRepository" class="ua.epam.spring.hometask.repository.impl.TicketRepositoryImpl"/>
 
     <bean id="eventRepository" class="ua.epam.spring.hometask.repository.impl.EventRepositoryImpl"/>
 

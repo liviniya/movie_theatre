@@ -1,6 +1,7 @@
 package ua.epam.spring.hometask.service.impl;
 
 import ua.epam.spring.hometask.domain.*;
+import ua.epam.spring.hometask.repository.TicketRepository;
 import ua.epam.spring.hometask.service.BookingService;
 import ua.epam.spring.hometask.service.DiscountService;
 
@@ -34,6 +35,8 @@ public class BookingServiceImpl implements BookingService {
 
     private DiscountService discountService;
 
+    private TicketRepository ticketRepository;
+
     @Override
     public double getTicketsPrice(@Nonnull Event event, @Nonnull LocalDateTime dateTime,
                                   @Nullable User user, @Nonnull Set<Long> seats) {
@@ -59,16 +62,22 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void bookTickets(@Nonnull Set<Ticket> tickets) {
-
+        for (Ticket ticket : tickets) {
+            ticketRepository.save(ticket);
+        }
     }
 
     @Nonnull
     @Override
     public Set<Ticket> getPurchasedTicketsForEvent(@Nonnull Event event, @Nonnull LocalDateTime dateTime) {
-        return null;
+        return ticketRepository.getByEventAndDate(event, dateTime);
     }
 
     public void setDiscountService(DiscountService discountService) {
         this.discountService = discountService;
+    }
+
+    public void setTicketRepository(TicketRepository ticketRepository) {
+        this.ticketRepository = ticketRepository;
     }
 }

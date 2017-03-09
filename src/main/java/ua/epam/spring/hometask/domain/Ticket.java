@@ -39,6 +39,22 @@ public class Ticket extends DomainObject implements Comparable<Ticket> {
         return seat;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setSeat(long seat) {
+        this.seat = seat;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(dateTime, event, seat);
